@@ -1,5 +1,6 @@
 node_modules
 *.log
 .nuxt
+.env
 nuxt.d.ts
 .output

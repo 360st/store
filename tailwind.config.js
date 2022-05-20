@@ -5,7 +5,15 @@ module.exports = {
     './pages/**/*.vue',
   ],
   theme: {
-    extend: {}
+    extend: {},
+    container: {
+      center: true,
+      padding: '0.5rem'
+    },
+    screens: {
+      'xl': '1266px',
+      '2xl': '1266px'
+    }
   },
   plugins: [
     require('@tailwindcss/typography'),
