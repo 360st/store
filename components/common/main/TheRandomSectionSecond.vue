@@ -1,16 +1,14 @@
-<script setup>
-
-const props = defineProps({
-    datas: Object
-})
-
-</script>
+<script setup></script>
 <template>
     <div class="py-8 container grid grid-cols-2 gap-8">
         <div class="col-span-1 mt-4">
             <ul class="flex gap-2">
-                <ListProducts v-for="data in props.datas" :key="data.id" :name="data.name" :slug="data.slug" :attributes="data.attributes" :price="data.price"
-                    :id="data.id" :image="data.images" />
+                <Suspense>
+                    <ListSuspense productsId=" 1511, 1659, 6695" />
+                    <template #fallback>
+                        <ListSkeleton />
+                    </template>
+                </Suspense>
             </ul>
         </div>
         <div class="col-span-1 relative">

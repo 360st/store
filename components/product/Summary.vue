@@ -4,16 +4,24 @@ const props = defineProps({
     short_description: String,
     stock_status: String,
     price: String,
-    attributes: Object
+    attributes: Object,
+    variations: Array
 })
 
+const route = useRoute()
 const inputValue = ref(1)
-const price = computed(() => Number(props.price))
+const variationId = ref(null)
 
-const variations = props.attributes.filter(s => s.name === "Rozmiar").map(o => o.options).flat()
+const sizes = props.attributes.filter(s => s.name === "Rozmiar").map(o => o.options).flat()
+
+const price = computed(() => Number(props.price))
 const checkStock = computed(() => props.stock_status === "instock" ? '<strong>Wysyłka: 1-3 dni roboczych</strong>, produkt dostępny' : 'Produkct niedostępny')
 const formatedPrice = computed(() => `${price.value} zł`)
 const freeShipping = computed(() => price.value > 300 ? 'wysyłka gratis' : 'wysyłka od 12,99 zł')
+
+const getVariationId = (value) => {
+    variationId.value = value
+}
 
 </script>
 <template>
@@ -22,7 +30,7 @@ const freeShipping = computed(() => price.value > 300 ? 'wysyłka gratis' : 'wys
 
     <div class="mt-6 flex gap-4">
         <a class=" underline text-gray-500" href="#info">Więcej informacji o produkcie</a>
-        <span class="ml-auto" :class="[freeShipping && ' rounded-full bg-amber-100 px-2 py-0 text-xs']">{{ freeShipping }}</span>
+        <span class="ml-auto rounded-full bg-green-500 px-2 py-1 text-xs text-white">{{ freeShipping }}</span>
     </div>
 
     <div class="mt-6 grid grid-cols-12">
@@ -37,9 +45,9 @@ const freeShipping = computed(() => price.value > 300 ? 'wysyłka gratis' : 'wys
         </div>
         <div class=" col-span-9">
             <ul class="mb-4">
-                <li class=" py-1 px-2 mr-2 inline-block border border-gray-300 cursor-pointer mb-2" v-for="variation in variations"
-                    :key="variation">
-                    {{ variation }}
+                <li class=" py-1 px-2 mr-2 inline-block border border-gray-300 cursor-pointer mb-2" v-for="(size, index) in sizes"
+                    :key="size" @click="getVariationId(props.variations[index])">
+                    {{ size }}
                 </li>
             </ul>
             <p class=" py-4 text-3xl font-light">{{ formatedPrice }}</p>

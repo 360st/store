@@ -2,7 +2,7 @@
 const props = defineProps({
     upsell_ids: Array
 })
-console.log(props.upsell_ids)
+
 </script>
 <template>
     <div class=" container">
