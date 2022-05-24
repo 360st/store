@@ -25,7 +25,7 @@
                 </div>
                 <div class=" col-span-1">
                     <figure class="relative">
-                        <nuxt-link to="/product/">
+                        <nuxt-link to="/kategoria/products/">
                             <div
                                 class="before:opacity-50 before:absolute before:content-[''] before:bg-gradient-to-t before:from-black before:to-transparent before:w-full before:h-full before:bottom-0">
                                 <img src="@/assets/images/koldra-antyalergiczna-1.jpg.webp"

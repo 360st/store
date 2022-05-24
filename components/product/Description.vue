@@ -60,13 +60,13 @@ const logo = computed(() => {
 
         </div>
         <div class=" col-span-12 flex justify-center mb-8">
-            <nuxt-link to="#"><img class=" grayscale " :src="`assets/images/logos/${logo}`" :alt="brand" />
+            <nuxt-link to="#"><img class=" grayscale " :src="`../assets/images/logos/${logo}`" :alt="brand" />
             </nuxt-link>
         </div>
         <div id="info" class=" grid col-span-7 text-base" v-html="props.description" />
         
         <div class=" col-span-5">
-            <img class=" shadow-2xl rounded-xl" :src="props.images" />
+            <img class=" shadow-2xl rounded-xl" :src="props.images" :alt="brand" />
         </div>
     </div>
 </template>

@@ -6,9 +6,8 @@ const props = defineProps({
     attributes: Array,
     image: Array,
     id: Number,
-    price: String
+    price: String,
 })
-
 const idToString = computed(() => props.id.toString())
 const showHideAtributesId = ref(null)
 
@@ -26,8 +25,8 @@ const size = props.attributes.filter(s => s.name === "Rozmiar").map(o => o.optio
 
 </script>
 <template>
-    <li @mouseenter="getProductId(props.id)" @mouseleave="resetProductId">
-        <nuxt-link :to="`/${props.slug}`">
+    <li @mouseenter="getProductId(props.id)" @mouseleave="resetProductId" >
+        <nuxt-link :to="`/produkt/${props.slug}`">
             <div class="relative">
                 <Transition>
                     <div v-show="props.id === showHideAtributesId">
@@ -53,4 +52,5 @@ const size = props.attributes.filter(s => s.name === "Rozmiar").map(o => o.optio
             <p class=" font-bold mt-1">{{ price }}</p>
         </nuxt-link>
     </li>
+
 </template>

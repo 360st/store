@@ -7,49 +7,63 @@ const navigationObj = [
         subMenu: [
             {
                 name: 'Kołdry puchowe',
-                img: 'Biala_Koldra_Puchowa_PIOREX_Zimowa_Linia_Ekskluzywna.jpg.webp'
+                link: '/kategoria/koldry-i-poduszki/koldry-puchowe',
+                img: 'Biala_Koldra_Puchowa_PIOREX_Zimowa_Linia_Ekskluzywna.jpg.webp',
+                slug: 'koldry-puchowe'
             },
             {
                 name: 'Poduszki puchowe',
-                img: 'Yessen-poduszka.jpg.webp'
+                link: '/kategoria/koldry-i-poduszki/poduszki-puchowe',
+                img: 'Yessen-poduszka.jpg.webp',
+                slug: 'poduszki-puchowe'
             },
             {
                 name: 'Kołdry antyalergiczne',
-                img: 'Koldra_Antyalergiczna_BODY_NICE-TROPIC_Letnia.jpg.webp'
+                link: '/kategoria/koldry-i-poduszki/koldry-antyalergiczne',
+                img: 'kategori/Koldra_Antyalergiczna_BODY_NICE-TROPIC_Letnia.jpg.webp',
+                slug: 'koldry-antyalergiczne'
             },
             {
                 name: 'Poduszki antyalergiczne',
-                img: 'Poduszka_antyalergiczna_New_Lawender3.jpg.webp'
+                link: '/kategoria/koldry-i-poduszki/poduszki-antyalergiczne',
+                img: 'Poduszka_antyalergiczna_New_Lawender3.jpg.webp',
+                slug: 'poduszki-antyalergiczne'
             },
             {
                 name: 'Kołdry Naturalne',
-                img: 'InterWidex-Senna-Home-Koldra-BOTANICA-kostka2.jpg'
+                link: '/kategoria/koldry-i-poduszki/koldry-naturalne',
+                img: 'InterWidex-Senna-Home-Koldra-BOTANICA-kostka2.jpg',
+                slug: 'koldry-naturalne'
             }
         ],
     },
     {
-        name: 'Pościel'
+        name: 'Pościel',
+        link: '/kategoria/posciel',
+        slug: 'posciel'
     },
     {
-        name: 'Koce i Pledy'
+        name: 'Koce i Pledy',
+        link: '/kategoria/koce-i-pledy',
+        slug: 'koce-i-pledy'
     },
     {
-        name: 'Prześcieradła'
+        name: 'Prześcieradła',
+        link: '/kategoria/przescieradla',
+        slug: 'przescieradla'
     },
     {
-        name: 'Łazienka'
+        name: 'Łazienka',
+        link: '/kategoria/lazienka',
+        slug: 'lazienka'
     },
     {
-        name: 'Nowości'
+        name: 'Nowości',
+        link: '#',
     },
     {
-        name: 'Promocje'
-    },
-    {
-        name: 'Marki'
-    },
-    {
-        name: 'Blog'
+        name: 'Promocje',
+        link: '#',
     }
 ]
 
@@ -93,7 +107,7 @@ const navigationObj = [
                     <MenuButton v-if="nav.subMenu" class="px-6 first:pl-0 hover:underline flex items-center uppercase">
                         {{ nav.name }} <img src="@/assets/images/arrow.svg" width="18" />
                     </MenuButton>
-                    <nuxt-link v-else to="#" class="px-6 hover:underline flex items-center gap-2">
+                    <nuxt-link v-else :to="nav.link" class="px-6 hover:underline flex items-center gap-2">
                         {{ nav.name }}
                     </nuxt-link>
                     <Transition>
@@ -101,7 +115,7 @@ const navigationObj = [
                             <MenuItem>
                             <ul class="grid grid-cols-10 gap-4 shadow-2xl pb-6">
                                 <li class=" uppercase col-span-2" v-for="subNav in nav.subMenu" :key="subNav">
-                                    <nuxt-link to="#" class=" hover:underline">
+                                    <nuxt-link :to="subMenu.link" class=" hover:underline">
                                         <img
                                             :src="`assets/images/${subNav.img}`" />
                                         <span class="inline-block pl-4">{{ subNav.name }}</span>

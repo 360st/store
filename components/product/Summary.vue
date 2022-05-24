@@ -5,22 +5,19 @@ const props = defineProps({
     stock_status: String,
     price: String,
     attributes: Object,
-    variations: Array
+    variations: Array,
+    id: Number
 })
 
-const route = useRoute()
 const inputValue = ref(1)
-const variationId = ref(null)
-
 const sizes = props.attributes.filter(s => s.name === "Rozmiar").map(o => o.options).flat()
 
-const price = computed(() => Number(props.price))
+const price = ref(props.price)
 const checkStock = computed(() => props.stock_status === "instock" ? '<strong>Wysyłka: 1-3 dni roboczych</strong>, produkt dostępny' : 'Produkct niedostępny')
 const formatedPrice = computed(() => `${price.value} zł`)
 const freeShipping = computed(() => price.value > 300 ? 'wysyłka gratis' : 'wysyłka od 12,99 zł')
-
-const getVariationId = (value) => {
-    variationId.value = value
+const priceFromVariation = (value) => {
+    price.value = value
 }
 
 </script>
@@ -45,10 +42,7 @@ const getVariationId = (value) => {
         </div>
         <div class=" col-span-9">
             <ul class="mb-4">
-                <li class=" py-1 px-2 mr-2 inline-block border border-gray-300 cursor-pointer mb-2" v-for="(size, index) in sizes"
-                    :key="size" @click="getVariationId(props.variations[index])">
-                    {{ size }}
-                </li>
+                <ProductVariations :id="props.id" :sizes="sizes" :variations="props.variations" @price="priceFromVariation" />
             </ul>
             <p class=" py-4 text-3xl font-light">{{ formatedPrice }}</p>
             <p class=" text-green-500" v-html="checkStock" />
