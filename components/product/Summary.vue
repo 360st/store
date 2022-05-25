@@ -46,7 +46,7 @@ const priceFromVariation = (value) => {
             </ul>
             <p class=" py-4 text-3xl font-light">{{ formatedPrice }}</p>
             <p class=" text-green-500" v-html="checkStock" />
-            <button class=" bg-amber-500 mt-6 h-14 w-full uppercase font-semibold">dodaj do koszyka</button>
+            <button :disabled="props.stock_status !== 'instock'" :class="{'opacity-50': props.stock_status !== 'instock'}" class=" bg-amber-500 mt-6 h-14 w-full uppercase font-semibold">dodaj do koszyka</button>
         </div>
     </div>
 </template>

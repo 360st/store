@@ -26,7 +26,7 @@ const size = props.attributes.filter(s => s.name === "Rozmiar").map(o => o.optio
 </script>
 <template>
     <li @mouseenter="getProductId(props.id)" @mouseleave="resetProductId" >
-        <nuxt-link :to="`/produkt/${props.slug}`">
+        <nuxt-link :to="`/${props.slug}`">
             <div class="relative">
                 <Transition>
                     <div v-show="props.id === showHideAtributesId">

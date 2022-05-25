@@ -1,8 +1,12 @@
 <script setup>
-const route = useRouter()
+const categoryId = ref(null)
+const emit = defineEmits(['categoryId'])
+const route = useRoute()
+const { data }  = await useFetch(`/api/categories/${route.params.kategoria}`, {pick: ['name', 'id']}) 
 
-//const { data }  = await useFetch(`/api/categories/${route.params.name}`) 
+emit('categoryId', data.value.id)
+
 </script>
 <template>
-    
+    <Title :name="data.name" />
 </template>

@@ -5,7 +5,7 @@ const props = defineProps({
     upSell: Boolean,
     listId: String
 })
-
+console.log(props.listId)
 const { data: list}  = props.listId ? await useFetch(`/api/list/${props.listId}`) : await useFetch(`/api/include/${props.productsId}`)
 
 </script>
