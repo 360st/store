@@ -1,12 +1,37 @@
 <script setup>
+import { useMainStore } from '@/store/useMainStore';
+import { storeToRefs } from 'pinia';
+
+const { idPaginationPage } = storeToRefs(useMainStore())
+
 const props = defineProps({
     // datas: Object,
     productsId: String,
     upSell: Boolean,
     listId: String
 })
-console.log(props.listId)
-const { data: list}  = props.listId ? await useFetch(`/api/list/${props.listId}`) : await useFetch(`/api/include/${props.productsId}`)
+const emit = defineEmits(['totalPagesInCategory'])
+
+
+const { data: list, refresh }  = props.listId ? await useFetch(`/api/list/${props.listId}?strona=${idPaginationPage.value || 1}`) : await useFetch(`/api/include/${props.productsId}`)
+
+if(props.listId){
+    
+    const totalPagesInCategory = ref(0)
+    totalPagesInCategory.value = parseInt(list.value.slice(-1)[0].totalPages)
+    emit('totalPagesInCategory', totalPagesInCategory.value)
+
+    list.value.splice(-1, 1)
+}
+
+// watch(() => idPaginationPage.value, (curr, prev) => {
+//      console.log(curr, prev)
+//      if(curr !== prev){
+//          console.log(refresh())
+//          refresh()
+//      }
+    
+//  } )
 
 </script>
 <template>

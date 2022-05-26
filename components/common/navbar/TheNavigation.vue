@@ -7,31 +7,31 @@ const navigationObj = [
         subMenu: [
             {
                 name: 'Kołdry puchowe',
-                link: '/kategoria/koldry-i-poduszki/koldry-puchowe',
+                link: '/kategoria/koldry-puchowe',
                 img: 'Biala_Koldra_Puchowa_PIOREX_Zimowa_Linia_Ekskluzywna.jpg.webp',
                 slug: 'koldry-puchowe'
             },
             {
                 name: 'Poduszki puchowe',
-                link: '/kategoria/koldry-i-poduszki/poduszki-puchowe',
+                link: '/kategoria/poduszki-puchowe',
                 img: 'Yessen-poduszka.jpg.webp',
                 slug: 'poduszki-puchowe'
             },
             {
                 name: 'Kołdry antyalergiczne',
-                link: '/kategoria/koldry-i-poduszki/koldry-antyalergiczne',
+                link: '/kategoria/koldry-antyalergiczne',
                 img: 'kategori/Koldra_Antyalergiczna_BODY_NICE-TROPIC_Letnia.jpg.webp',
                 slug: 'koldry-antyalergiczne'
             },
             {
                 name: 'Poduszki antyalergiczne',
-                link: '/kategoria/koldry-i-poduszki/poduszki-antyalergiczne',
+                link: '/kategoria/poduszki-antyalergiczne',
                 img: 'Poduszka_antyalergiczna_New_Lawender3.jpg.webp',
                 slug: 'poduszki-antyalergiczne'
             },
             {
                 name: 'Kołdry Naturalne',
-                link: '/kategoria/koldry-i-poduszki/koldry-naturalne',
+                link: '/kategoria/koldry-naturalne',
                 img: 'InterWidex-Senna-Home-Koldra-BOTANICA-kostka2.jpg',
                 slug: 'koldry-naturalne'
             }

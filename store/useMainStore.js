@@ -5,7 +5,7 @@ export const useMainStore = defineStore({
 
   state: () => {
     return {
- 
+      idPaginationPage: '1'
     }
   },
 

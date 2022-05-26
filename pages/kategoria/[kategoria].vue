@@ -1,8 +1,13 @@
 <script setup>
 const listId = ref(null)
+const totalPagesInCategory = ref(null)
 const getId = (id) => {
     listId.value = id
 }
+const getTotalPagesInCategory = (value) => {
+    totalPagesInCategory.value = value
+}
+
 </script>
 <template>
     <div class="text-gray-800 text-[.875rem]">
@@ -21,12 +26,13 @@ const getId = (id) => {
 
             <Suspense v-if="listId">
                 <ul class="mb-16 grid grid-cols-12 gap-4 justify-center">
-                    <ListSuspense :listId="listId" />
+                    <ListSuspense :listId="listId" @totalPagesInCategory="getTotalPagesInCategory" />
                 </ul>
                 <template #fallback>
                     <ListSkeleton />
                 </template>
             </Suspense>
+            <ListPagination v-if="totalPagesInCategory" :totalPagesInCategory="totalPagesInCategory" />
         </div>
         <NuxtLayout name="footer" />
     </div>
