@@ -1,6 +1,10 @@
 <script setup>
+import { useMainStore } from '@/store/useMainStore';
+import { storeToRefs } from 'pinia';
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
 
+
+const { quantity } = storeToRefs(useMainStore())
 const navigationObj = [
     {
         name: 'Kołdry i Poduszki',
@@ -88,10 +92,10 @@ const navigationObj = [
                 </nuxt-link>
             </div>
             <div class="relative col-span-3">
-                <nuxt-link to="#">
+                <nuxt-link to="/koszyk">
                     <img src="@/assets/images/bag.svg" alt="Koszyk" width="27" />
                     <span
-                        class=" bg-amber-500 absolute top-3/4 text-xs font-bold right-0 w-5 h-5 flex justify-center items-center rounded-full">0</span>
+                        class=" bg-amber-500 absolute top-3/4 text-xs font-bold right-0 w-5 h-5 flex justify-center items-center rounded-full">{{quantity}}</span>
                 </nuxt-link>
             </div>
             <nuxt-link to="#" class=" col-span-6 text-right">Moje konto</nuxt-link>

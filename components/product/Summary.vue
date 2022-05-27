@@ -1,4 +1,8 @@
 <script setup>
+import { useMainStore } from '@/store/useMainStore';
+
+const { addToCart } = useMainStore()
+
 const props = defineProps({
     price_html: String,
     short_description: String,
@@ -6,18 +10,40 @@ const props = defineProps({
     price: String,
     attributes: Object,
     variations: Array,
-    id: Number
+    id: Number,
+    name: String,
+    image: String,
 })
 
-const inputValue = ref(1)
-const sizes = props.attributes.filter(s => s.name === "Rozmiar").map(o => o.options).flat()
+const modal = ref({})
+const quantity = ref(1)
+const size = ref(null)
+const isOpenModal = ref(false)
 
+const sizes = props.attributes.filter(s => s.name === "Rozmiar").map(o => o.options).flat()
 const price = ref(props.price)
 const checkStock = computed(() => props.stock_status === "instock" ? '<strong>Wysyłka: 1-3 dni roboczych</strong>, produkt dostępny' : 'Produkct niedostępny')
 const formatedPrice = computed(() => `${price.value} zł`)
 const freeShipping = computed(() => price.value > 300 ? 'wysyłka gratis' : 'wysyłka od 12,99 zł')
-const priceFromVariation = (value) => {
+
+const getPriceFromVariation = (value) => {
     price.value = value
+}
+const getQuantity = (value) => {
+    quantity.value = value
+}
+const getSize = (value) => {
+    size.value = value
+}
+
+const add = () => {
+    modal.value = {
+        name: props.name,
+        size: size.value || sizes[0],
+        quantity: quantity.value
+    }
+    isOpenModal.value = true
+    addToCart(props.id, props.image, props.name, size.value || sizes[0], Number(price.value), quantity.value)
 }
 
 </script>
@@ -34,23 +60,24 @@ const priceFromVariation = (value) => {
         <div class="col-span-3 flex flex-col">
             <p class=" text-xs text-gray-500">ROZMIAR</p>
             <div class=" mt-auto">
-                <button @click="inputValue !== 1 && inputValue--" class=" border border-gray-300 w-7 h-14"> - </button>
-                <input class=" border-y border-gray-300 w-7 h-14 text-center focus:outline-none appearance-textfield"
-                    type="number" min="1" step="1" v-model="inputValue" />
-                <button @click="inputValue++" class=" border border-gray-300 w-7 h-14"> + </button>
+                <ProductQuantity @quantity="getQuantity" />
             </div>
         </div>
         <div class=" col-span-9">
             <ul class="mb-4">
-                <ProductVariations :id="props.id" :sizes="sizes" :variations="props.variations" @price="priceFromVariation" />
+                <ProductVariations :id="props.id" :sizes="sizes" :variations="props.variations" @price="getPriceFromVariation" @size="getSize" />
             </ul>
             <p class=" py-4 text-3xl font-light">{{ formatedPrice }}</p>
             <p class=" text-green-500" v-html="checkStock" />
-            <button :disabled="props.stock_status !== 'instock'" :class="{'opacity-50': props.stock_status !== 'instock'}" class=" bg-amber-500 mt-6 h-14 w-full uppercase font-semibold">dodaj do koszyka</button>
+            <button @click="add" :disabled="props.stock_status !== 'instock'" :class="{'opacity-50': props.stock_status !== 'instock'}" class=" bg-amber-500 mt-6 h-14 w-full uppercase font-semibold">dodaj do koszyka</button>
         </div>
     </div>
+    <div>
+        <ProductModal @modalClose="isOpenModal = false" :isOpen="isOpenModal" :modalData="modal" />
+    </div>
+    
 </template>
-<style scoped>
+<style>
 .appearance-textfield {
     -moz-appearance: textfield;
 

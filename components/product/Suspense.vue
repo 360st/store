@@ -14,7 +14,7 @@ const { data } = await useFetch(`/api/products/${route.params.id}`, {pick: ['ima
         </div>
         <div class=" w-1/2">
             <Title :name="data.name" />
-            <ProductSummary :id="data.id" :variations="data.variations" :price_html="data.price_html" :short_description="data.short_description" :stock_status="data.stock_status" :price="data.price" :attributes="data.attributes" />
+            <ProductSummary :image="data.images[0].src" :name="data.name" :id="data.id" :variations="data.variations" :price_html="data.price_html" :short_description="data.short_description" :stock_status="data.stock_status" :price="data.price" :attributes="data.attributes" />
         </div>
     </div>
     <ProductDescription :description="data.description" :meta="data.meta_data" :attributes="data.attributes" :images="data.images[0].src" />

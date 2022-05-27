@@ -1,8 +1,8 @@
 <script setup>
-const listId = ref(null)
+const categoryId = ref(null)
 const totalPagesInCategory = ref(null)
-const getId = (id) => {
-    listId.value = id
+const getCategoryId = (id) => {
+    categoryId.value = id
 }
 const getTotalPagesInCategory = (value) => {
     totalPagesInCategory.value = value
@@ -15,7 +15,7 @@ const getTotalPagesInCategory = (value) => {
         <Breadcrumbs />
         <div class=" container">
             <Suspense>
-                <CategoriesSuspense @categoryId="getId" />
+                <CategoriesSuspense @categoryId="getCategoryId" />
                 <template #fallback>
                     <div class="animate-pulse w-64 h-9 bg-stone-100 mt-4 mb-4 rounded"></div>
                 </template>
@@ -24,9 +24,9 @@ const getTotalPagesInCategory = (value) => {
             <ListSubcategories />
             <ListFilters />
 
-            <Suspense v-if="listId">
+            <Suspense v-if="categoryId">
                 <ul class="mb-16 grid grid-cols-12 gap-4 justify-center">
-                    <ListSuspense :listId="listId" @totalPagesInCategory="getTotalPagesInCategory" />
+                    <ListSuspense :categoryId="categoryId" @totalPagesInCategory="getTotalPagesInCategory" />
                 </ul>
                 <template #fallback>
                     <ListSkeleton />
