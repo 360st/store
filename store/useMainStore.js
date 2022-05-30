@@ -6,7 +6,8 @@ export const useMainStore = defineStore({
   state: () => {
     return {
       idPaginationPage: null,
-      cart: []
+      cart: [],
+      wishlist: []
     }
   },
 
@@ -18,7 +19,7 @@ export const useMainStore = defineStore({
   actions: {
     addToCart(id, image, name, size, price, quantity) {
       const product = this.cart.find(e => e.id === id && e.size === size)
-      
+
       product ? product.quantity += quantity
         : this.cart.push({
           id: id,
@@ -32,9 +33,21 @@ export const useMainStore = defineStore({
     changeQuantityProductCart(index, newQuantity) {
       this.cart[index].quantity = newQuantity
     },
-    removeFromCart(index){
+    removeFromCart(index) {
       this.cart.splice(index, 1)
-    }
+    },
+    addToWishlist(id, image, name, slug, price) {
+      this.wishlist.push({
+        id: id,
+        image: image,
+        name: name,
+        slug: slug,
+        price: price
+      })
+    },
+    removeFromWishlist(index) {
+      this.wishlist.splice(index, 1)
+    },    
   },
 });
 

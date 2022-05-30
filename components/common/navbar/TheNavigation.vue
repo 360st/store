@@ -4,7 +4,7 @@ import { storeToRefs } from 'pinia';
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
 
 
-const { quantity } = storeToRefs(useMainStore())
+const { quantity, wishlist } = storeToRefs(useMainStore())
 const navigationObj = [
     {
         name: 'Kołdry i Poduszki',
@@ -86,9 +86,9 @@ const navigationObj = [
         </div>
         <div class=" col-span-2 uppercase grid grid-cols-12 gap-4 items-center">
             <div class="relative col-span-3">
-                <nuxt-link to="#">
+                <nuxt-link to="/wishlist">
                     <img src="@/assets/images/heart.svg" alt="Ulubione" width="27" />
-                    <span class="absolute right-0 w-5 h-5 top-3/4">0</span>
+                    <span class="absolute right-0 w-5 h-5 top-3/4">{{ wishlist.length }}</span>
                 </nuxt-link>
             </div>
             <div class="relative col-span-3">

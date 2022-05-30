@@ -25,28 +25,29 @@ const size = props.attributes.filter(s => s.name === "Rozmiar").map(o => o.optio
 
 </script>
 <template>
-    <li @mouseenter="getProductId(props.id)" @mouseleave="resetProductId" >
-        <nuxt-link :to="`/${props.slug}`">
-            <div class="relative">
-                <Transition>
-                    <div v-show="props.id === showHideAtributesId">
-                        <div class=" absolute z-10 bg-white rounded-full p-2.5 right-2 top-2">
-                            <img src="@/assets/images/heart.svg" alt="dodaj do listy życzeń" width="17" />
-                        </div>
-                        <div v-if="props.attributes"
-                            class=" text-center bg-white p-2 absolute w-11/12 left-[4.5%] bottom-0">
-                            <p class="text-xs">Dostępne rozmiary:</p>
-                            <ul>
-                                <li v-for="atribute in size" :key="atribute"
-                                    class=" inline-block font-bold px-0.5 text-xs">
-                                    {{ atribute }}
-                                </li>
-                            </ul>
-                        </div>
+    <li @mouseenter="getProductId(props.id)" @mouseleave="resetProductId">
+
+        <div class="relative">
+            <Transition>
+                <div v-show="props.id === showHideAtributesId">
+                    <ListWishlist :name="props.name" :slug="props.slug" :image="props.image[0].src" :id="props.id"
+                        :price="props.price" />
+                    <div v-if="props.attributes"
+                        class=" text-center bg-white p-2 absolute w-11/12 left-[4.5%] bottom-0">
+                        <p class="text-xs">Dostępne rozmiary:</p>
+                        <ul>
+                            <li v-for="atribute in size" :key="atribute" class=" inline-block font-bold px-0.5 text-xs">
+                                {{ atribute }}
+                            </li>
+                        </ul>
                     </div>
-                </Transition>
+                </div>
+            </Transition>
+            <nuxt-link :to="`/${props.slug}`">
                 <img class="mb-2 w-screen" :src="img" :alt="props.name" />
-            </div>
+            </nuxt-link>
+        </div>
+        <nuxt-link :to="`/${props.slug}`">
             <p class=" text-xs text-gray-600 uppercase mb-1" v-html="brand" />
             <h2>{{ props.name }}</h2>
             <p class=" font-bold mt-1">{{ price }}</p>
