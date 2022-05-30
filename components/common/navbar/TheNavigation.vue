@@ -2,6 +2,7 @@
 import { useMainStore } from '@/store/useMainStore';
 import { storeToRefs } from 'pinia';
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
+import Search from './Search.vue';
 
 
 const { quantity, wishlist } = storeToRefs(useMainStore())
@@ -79,10 +80,7 @@ const navigationObj = [
             <nuxt-link to="/"><img src="@/assets/images/logo.svg" alt="Cotti" width="143" /></nuxt-link>
         </div>
         <div class=" col-span-4 relative">
-            <img class=" absolute top-4 left-2 opacity-50" src="@/assets/images/search.svg" alt="Szukaj" width="20" />
-            <form>
-                <input class=" h-12 border-b border-black w-full pl-10" type="text" placeholder="Szukaj produktów" />
-            </form>
+            <Search />
         </div>
         <div class=" col-span-2 uppercase grid grid-cols-12 gap-4 items-center">
             <div class="relative col-span-3">

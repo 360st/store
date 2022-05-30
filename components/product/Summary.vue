@@ -1,6 +1,8 @@
 <script setup>
 import { useMainStore } from '@/store/useMainStore';
+import { storeToRefs } from 'pinia';
 
+const { modalDisplay } = storeToRefs(useMainStore())
 const { addToCart } = useMainStore()
 
 const props = defineProps({
@@ -18,7 +20,6 @@ const props = defineProps({
 const modal = ref({})
 const quantity = ref(1)
 const size = ref(null)
-const isOpenModal = ref(false)
 
 const sizes = props.attributes.filter(s => s.name === "Rozmiar").map(o => o.options).flat()
 const price = ref(props.price)
@@ -42,10 +43,9 @@ const add = () => {
         size: size.value || sizes[0],
         quantity: quantity.value
     }
-    isOpenModal.value = true
+    modalDisplay.value = true
     addToCart(props.id, props.image, props.name, size.value || sizes[0], Number(price.value), quantity.value)
 }
-
 </script>
 <template>
     <p class="mb-4" v-html="props.price_html" />
@@ -72,10 +72,9 @@ const add = () => {
             <button @click="add" :disabled="props.stock_status !== 'instock'" :class="{'opacity-50': props.stock_status !== 'instock'}" class=" bg-amber-500 mt-6 h-14 w-full uppercase font-semibold">dodaj do koszyka</button>
         </div>
     </div>
-    <div>
-        <ProductModal @modalClose="isOpenModal = false" :isOpen="isOpenModal" :modalData="modal" />
-    </div>
-    
+    <Teleport to="body">
+        <ProductModal :modalData="modal" />
+    </Teleport>
 </template>
 <style>
 .appearance-textfield {

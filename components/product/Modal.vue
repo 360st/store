@@ -1,24 +1,21 @@
 <script setup>
 import { TransitionRoot, TransitionChild, Dialog, DialogPanel, DialogTitle } from '@headlessui/vue'
+import { useMainStore } from '@/store/useMainStore';
+import { storeToRefs } from 'pinia';
+
+const { modalDisplay } = storeToRefs(useMainStore())
 const props = defineProps({
-    isOpen: Boolean,
     modalData: Object
 })
-const emit = defineEmits(['modalClose'])
-const isOpen = ref(false)
 
-function closeModal() {
-    isOpen.value = false
-    emit('modalClose')
+const closeModal = () => {
+    modalDisplay.value = false
 }
-watch(() => props.isOpen, () => {
-    isOpen.value = true
-})
 
 </script>
 <template>
-    <TransitionRoot appear :show="isOpen" as="template">
-        <Dialog as="div" @close="closeModal" class="relative z-10">
+    <TransitionRoot appear :show="modalDisplay" as="template">
+        <Dialog as="div" @close="closeModal" class="relative z-50">
             <TransitionChild as="template" enter="duration-300 ease-out" enter-from="opacity-0" enter-to="opacity-100"
                 leave="duration-200 ease-in" leave-from="opacity-100" leave-to="opacity-0">
                 <div class="fixed inset-0 bg-black bg-opacity-25" />
@@ -48,7 +45,7 @@ watch(() => props.isOpen, () => {
                                     Kontynuuj zakupy
                                 </button>
 
-                                <nuxt-link to="/koszyk"
+                                <nuxt-link to="/koszyk" @click="modalDisplay = false"
                                     class=" ml-auto inline-flex justify-center rounded-md border border-transparent bg-green-500 text-white px-4 py-2 text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2">
                                     Przejdź do koszyka
                                 </nuxt-link>

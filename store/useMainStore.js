@@ -6,6 +6,8 @@ export const useMainStore = defineStore({
   state: () => {
     return {
       idPaginationPage: null,
+      modalDisplay: false,
+      searchValue: '',
       cart: [],
       wishlist: []
     }
@@ -48,6 +50,9 @@ export const useMainStore = defineStore({
     removeFromWishlist(index) {
       this.wishlist.splice(index, 1)
     },    
+    search(value){
+      this.searchValue = value
+    }
   },
 });
 
