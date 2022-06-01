@@ -7,7 +7,7 @@
                 <h3 class=" text-2xl font-light mb-2">Pościel idealna</h3>
                 <p class=" text-gray-600">Znajdziesz ją właśnie u nas. Poznaj kolekcje Fleuresse Art Jesień/Zima
                     2021/22.</p>
-                <CommonTheBtnMain class=" text-gray-800" />
+                <CommonTheBtnMain class=" text-black" />
             </div>
         </div>
         <div class="col-span-1 mt-4">

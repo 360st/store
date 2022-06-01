@@ -4,7 +4,7 @@ const props = defineProps({
 })
 const route = useRoute()
 
-const { data } = await useFetch(`/api/products/${route.params.id}`, {pick: ['images', 'name', 'variations', 'price_html', 'short_description', 'stock_status', 'data.price', 'attributes', 'images', 'attributes', 'meta_data', 'price' ,'description', 'upsell_ids', 'id']})
+const { data } = await useFetch(`/api/products/${route.params.id}`, {pick: ['images', 'name', 'variations', 'price_html', 'short_description', 'stock_status', 'attributes', 'images', 'attributes', 'meta_data', 'price' ,'description', 'upsell_ids', 'id']})
 
 </script>
 <template>  

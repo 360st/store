@@ -25,7 +25,7 @@ const navigationObj = [
             {
                 name: 'Kołdry antyalergiczne',
                 link: '/kategoria/koldry-antyalergiczne',
-                img: 'kategori/Koldra_Antyalergiczna_BODY_NICE-TROPIC_Letnia.jpg.webp',
+                img: 'Koldra_Antyalergiczna_BODY_NICE-TROPIC_Letnia.jpg.webp',
                 slug: 'koldry-antyalergiczne'
             },
             {
@@ -116,8 +116,8 @@ const navigationObj = [
                         <MenuItems ad="div" class=" absolute top-full pt-6 w-[1250px] bg-white">
                             <MenuItem>
                             <ul class="grid grid-cols-10 gap-4 shadow-2xl pb-6">
-                                <li class=" uppercase col-span-2" v-for="subNav in nav.subMenu" :key="subNav">
-                                    <nuxt-link :to="subMenu.link" class=" hover:underline">
+                                <li class=" uppercase col-span-2" v-for="subNav in nav.subMenu" :key="subNav.name">
+                                    <nuxt-link :to="subNav.link" class=" hover:underline">
                                         <img
                                             :src="`assets/images/${subNav.img}`" />
                                         <span class="inline-block pl-4">{{ subNav.name }}</span>

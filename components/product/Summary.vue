@@ -46,6 +46,7 @@ const add = () => {
     modalDisplay.value = true
     addToCart(props.id, props.image, props.name, size.value || sizes[0], Number(price.value), quantity.value)
 }
+
 </script>
 <template>
     <p class="mb-4" v-html="props.price_html" />

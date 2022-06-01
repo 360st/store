@@ -7,7 +7,7 @@ export const useMainStore = defineStore({
     return {
       idPaginationPage: null,
       modalDisplay: false,
-      searchValue: '',
+      orderby: 'date',
       cart: [],
       wishlist: []
     }
@@ -50,8 +50,8 @@ export const useMainStore = defineStore({
     removeFromWishlist(index) {
       this.wishlist.splice(index, 1)
     },    
-    search(value){
-      this.searchValue = value
+    changeOrder(value){
+      this.orderby = value
     }
   },
 });

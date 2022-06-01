@@ -21,7 +21,7 @@ const logo = computed(() => {
             return 'hop-design-logo.png.webp'
         case "Tree&amp;Goose":
             return 'treegoose-logo_03.png.webp'
-        case "HEFEL":
+        case "Hefel":
             return 'hefel_logo_p72_0_03.png'
         case "My Alpaca":
             return 'logo-myalapca-farm-and-craft_03.png'
@@ -31,6 +31,8 @@ const logo = computed(() => {
             return 'logo-vossen_03.png.webp'
         case "Notte":
             return 'notte-logo.png.webp'
+        case "Yessen":
+            return 'YESSEN-logo.png.webp'
         case "Bossanova":
             return 'Bossanova-SONNO_03.png.webp'
     }
@@ -64,7 +66,7 @@ const logo = computed(() => {
             </nuxt-link>
         </div>
         <div id="info" class=" grid col-span-7 text-base" v-html="props.description" />
-        
+
         <div class=" col-span-5">
             <img class=" shadow-2xl rounded-xl" :src="props.images" :alt="brand" />
         </div>
