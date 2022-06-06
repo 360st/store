@@ -5,7 +5,7 @@ const add = () => {
     return navigateTo({
         path: '/search',
         query: {
-            value: searchValue.value,
+            value: searchValue.value.trim(),
         }
     })
 }

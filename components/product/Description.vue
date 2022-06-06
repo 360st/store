@@ -1,5 +1,14 @@
 <script setup>
-
+import img1 from '@/assets/images/logos/logo_fleuresse_03.png.webp'
+import img2 from '@/assets/images/logos/logo_piorex.png.webp'
+import img3 from '@/assets/images/logos/hop-design-logo.png.webp'
+import img4 from '@/assets/images/logos/treegoose-logo_03.png.webp'
+import img5 from '@/assets/images/logos/logo-myalapca-farm-and-craft_03.png'
+import img6 from '@/assets/images/logos/LOGO-BDV.png'
+import img7 from '@/assets/images/logos/logo-vossen_03.png.webp'
+import img8 from '@/assets/images/logos/notte-logo.png.webp'
+import img9 from '@/assets/images/logos/YESSEN-logo.png.webp'
+import img10 from '@/assets/images/logos/Bossanova-SONNO_03.png.webp'
 const props = defineProps({
     description: String,
     meta: Object,
@@ -14,27 +23,27 @@ const brand = props.attributes.filter(b => b.name === "Marka").map(o => o.option
 const logo = computed(() => {
     switch (brand) {
         case "Fleuresse":
-            return 'logo_fleuresse_03.png.webp'
+            return img1
         case "PIÓREX":
-            return 'logo_piorex.png.webp'
+            return img2
         case "HOP Design":
-            return 'hop-design-logo.png.webp'
+            return img3
         case "Tree&amp;Goose":
-            return 'treegoose-logo_03.png.webp'
+            return img4
         case "Hefel":
-            return 'hefel_logo_p72_0_03.png'
+            return img5
         case "My Alpaca":
-            return 'logo-myalapca-farm-and-craft_03.png'
+            return img5
         case "Blanc des Vosges":
-            return 'LOGO-BDV.png'
+            return img6
         case "Vossen":
-            return 'logo-vossen_03.png.webp'
+            return img7
         case "Notte":
-            return 'notte-logo.png.webp'
+            return img8
         case "Yessen":
-            return 'YESSEN-logo.png.webp'
+            return img9
         case "Bossanova":
-            return 'Bossanova-SONNO_03.png.webp'
+            return img10
     }
 })
 // const material = (name) => {
@@ -62,7 +71,7 @@ const logo = computed(() => {
 
         </div>
         <div class=" col-span-12 flex justify-center mb-8">
-            <nuxt-link to="#"><img class=" grayscale " :src="`../assets/images/logos/${logo}`" :alt="brand" />
+            <nuxt-link to="#"><img class=" grayscale " :src="logo" :alt="brand" />
             </nuxt-link>
         </div>
         <div id="info" class=" grid col-span-7 text-base" v-html="props.description" />

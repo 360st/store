@@ -1,4 +1,9 @@
 <script setup>
+import img1 from '@/assets/images/Biala_Koldra_Puchowa_PIOREX_Zimowa_Linia_Ekskluzywna.jpg.webp'
+import img2 from '@/assets/images/Yessen-poduszka.jpg.webp'
+import img3 from '@/assets/images/Koldra_Antyalergiczna_BODY_NICE-TROPIC_Letnia.jpg.webp'
+import img4 from '@/assets/images/Poduszka_antyalergiczna_New_Lawender3.jpg.webp'
+import img5 from '@/assets/images/InterWidex-Senna-Home-Koldra-BOTANICA-kostka2.jpg'
 import { useMainStore } from '@/store/useMainStore';
 import { storeToRefs } from 'pinia';
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
@@ -13,31 +18,31 @@ const navigationObj = [
             {
                 name: 'Kołdry puchowe',
                 link: '/kategoria/koldry-puchowe',
-                img: 'Biala_Koldra_Puchowa_PIOREX_Zimowa_Linia_Ekskluzywna.jpg.webp',
+                img: img1,
                 slug: 'koldry-puchowe'
             },
             {
                 name: 'Poduszki puchowe',
                 link: '/kategoria/poduszki-puchowe',
-                img: 'Yessen-poduszka.jpg.webp',
+                img: img2,
                 slug: 'poduszki-puchowe'
             },
             {
                 name: 'Kołdry antyalergiczne',
                 link: '/kategoria/koldry-antyalergiczne',
-                img: 'Koldra_Antyalergiczna_BODY_NICE-TROPIC_Letnia.jpg.webp',
+                img: img3,
                 slug: 'koldry-antyalergiczne'
             },
             {
                 name: 'Poduszki antyalergiczne',
                 link: '/kategoria/poduszki-antyalergiczne',
-                img: 'Poduszka_antyalergiczna_New_Lawender3.jpg.webp',
+                img: img4,
                 slug: 'poduszki-antyalergiczne'
             },
             {
                 name: 'Kołdry Naturalne',
                 link: '/kategoria/koldry-naturalne',
-                img: 'InterWidex-Senna-Home-Koldra-BOTANICA-kostka2.jpg',
+                img: img5,
                 slug: 'koldry-naturalne'
             }
         ],
@@ -96,7 +101,7 @@ const navigationObj = [
                         class=" bg-amber-500 absolute top-3/4 text-xs font-bold right-0 w-5 h-5 flex justify-center items-center rounded-full">{{quantity}}</span>
                 </nuxt-link>
             </div>
-            <nuxt-link to="#" class=" col-span-6 text-right">Moje konto</nuxt-link>
+            <nuxt-link to="/login" class=" col-span-6 text-right">Moje konto</nuxt-link>
         </div>
     </div>
 
@@ -119,7 +124,7 @@ const navigationObj = [
                                 <li class=" uppercase col-span-2" v-for="subNav in nav.subMenu" :key="subNav.name">
                                     <nuxt-link :to="subNav.link" class=" hover:underline">
                                         <img
-                                            :src="`assets/images/${subNav.img}`" />
+                                            :src="subNav.img" />
                                         <span class="inline-block pl-4">{{ subNav.name }}</span>
                                     </nuxt-link>
                                 </li>

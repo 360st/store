@@ -1,10 +1,17 @@
 <script setup>
+
 const props = defineProps({
     display:Number
 })
 const route = useRoute()
+const emit = defineEmits(['breadcrumbs'])
 
-const { data } = await useFetch(`/api/products/${route.params.id}`, {pick: ['images', 'name', 'variations', 'price_html', 'short_description', 'stock_status', 'attributes', 'images', 'attributes', 'meta_data', 'price' ,'description', 'upsell_ids', 'id']})
+const { data } = await useFetch(`/api/products/${route.params.id}`, {pick: ['images', 'name', 'variations', 'price_html', 'short_description', 'stock_status', 'attributes', 'images', 'attributes', 'meta_data', 'price' ,'description', 'upsell_ids', 'id', 'categories']})
+emit('breadcrumbs', {categories: data.value.categories, title: data.value.name})
+
+useHead({
+    title: data.value.name
+})
 
 </script>
 <template>  

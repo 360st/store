@@ -1,11 +1,13 @@
-<script setup></script>
+<script setup>
+    const breadcrumbs = ref()
+</script>
 <template>
     <div class="text-gray-800 text-[.875rem]">
         <NuxtLayout name="navbar" />
-        <Breadcrumbs />
+        <Breadcrumbs :breadcrumbs="breadcrumbs" />
         <Suspense>
             <template #default>
-                <ProductSuspense />
+                <ProductSuspense @breadcrumbs=" (val) => breadcrumbs = val"   />
             </template>
             <template #fallback>
                 <ProductSkeleton />

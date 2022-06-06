@@ -9,13 +9,13 @@
                     zadzwoń +48 736 839 132
                 </li>
                 <li class=" mx-1">
-                    <nuxt-link to="#">Metody wysyłki</nuxt-link>
+                    <nuxt-link>Metody wysyłki</nuxt-link>
                 </li>
                 <li class=" mx-1">
-                    <nuxt-link to="#">Rejestracja</nuxt-link>
+                    <nuxt-link>Rejestracja</nuxt-link>
                 </li>
                 <li class=" mx-1">
-                    <nuxt-link to="#">Kontakt</nuxt-link>
+                    <nuxt-link>Kontakt</nuxt-link>
                 </li>            
             </ul>
         </div>

@@ -7,9 +7,12 @@ export default defineNuxtConfig({
         key: process.env.KEY,
         // Keys within public, will be also exposed to the client-side
         public: {
-          baseURL: process.env.BASE,
+            baseURL: process.env.BASE,
         }
-      },   
+    },
+    meta: {
+        title: "Cotti"
+    },
     build: {
         postcss: {
             postcssOptions: {
@@ -23,9 +26,8 @@ export default defineNuxtConfig({
     buildModules: [
         ['@pinia/nuxt', { disableVuex: true }]
     ],
-    css:[
+    css: [
         '@/assets/css/tailwind.css'
     ]
 })
 
-  

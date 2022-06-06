@@ -1,12 +1,14 @@
 <script setup>
+
+const route = useRoute()
 const props = defineProps({
     subcategories: Object,
     parent:  Object
 })
-const route = useRoute()
+
 </script>
 <template>
-
+ 
     <nav>
         <ul>
             <li v-if="props.parent.name" class=" uppercase border border-gray-300 inline-block mr-6 mb-2 p-1 px-3 last:mr-0"><nuxt-link :to="`../${props.parent.slug}`">Wróć do: {{ props.parent.name }}</nuxt-link></li>
