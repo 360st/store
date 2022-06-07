@@ -6,7 +6,7 @@
             <div class=" span-col-1 grid grid-cols-2 gap-8 relative z-10 mt-8">
                 <div class=" col-span-1">
                     <figure class="relative">
-                        <nuxt-link to="/kategoria/koldry-i-poduszki/koldry-puchowe">
+                        <nuxt-link to="/kategoria/koldry-i-poduszki/koldry-puchowe" class=" group">
                             <div
                                 class="before:opacity-50 before:absolute before:content-[''] before:bg-gradient-to-t before:from-black before:to-transparent before:w-full before:h-full before:bottom-0">
                                 <img src="@/assets/images/koldry.jpg.webp" alt="kołdry puchowe" />
@@ -25,7 +25,7 @@
                 </div>
                 <div class=" col-span-1">
                     <figure class="relative">
-                        <nuxt-link to="/kategoria/koldry-i-poduszki/koldry-antyalergiczne">
+                        <nuxt-link to="/kategoria/koldry-i-poduszki/koldry-antyalergiczne" class=" group">
                             <div
                                 class="before:opacity-50 before:absolute before:content-[''] before:bg-gradient-to-t before:from-black before:to-transparent before:w-full before:h-full before:bottom-0">
                                 <img src="@/assets/images/koldra-antyalergiczna-1.jpg.webp"
@@ -45,7 +45,7 @@
                 </div>
                 <div class=" col-span-2">
                     <figure class="relative">
-                        <nuxt-link to="/kategoria/posciel/poszewki-na-poduszki">
+                        <nuxt-link to="/kategoria/posciel/poszewki-na-poduszki" class=" group">
                             <div
                                 class="before:opacity-50 before:absolute before:content-[''] before:bg-gradient-to-t before:from-black before:to-transparent before:w-full before:h-full before:bottom-0">
                                 <img src="@/assets/images/poduszki2.jpg.webp" alt="Poszewki na poduszki" />
@@ -75,7 +75,7 @@
 
                 </header>
                 <figure class="relative">
-                    <nuxt-link to="/kategoria/posciel">
+                    <nuxt-link to="/kategoria/posciel"  class=" group">
                         <div
                             class="before:opacity-50 before:absolute before:content-[''] before:bg-gradient-to-t before:from-black before:to-transparent before:w-full before:h-full before:bottom-0">
                             <img src="@/assets/images/posciel.jpg.webp" alt="pościel" />

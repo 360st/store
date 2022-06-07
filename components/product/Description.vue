@@ -16,8 +16,14 @@ const props = defineProps({
     attributes: Object
 })
 
-const fabric = props.meta.filter(s => s.key === "material").map(v => v.value).join(' ')
-const fulfillment = props.meta.filter(s => s.key === "wypelnienie").map(v => v.value).join(' ')
+const attributes = (name) => {
+    return props.meta.filter(s => s.key === name).map(v => v.value).join(' ')
+}
+
+const fabric =  attributes("material")
+const fulfillment = attributes("wypelnienie")
+
+
 const brand = props.attributes.filter(b => b.name === "Marka").map(o => o.options).join(' ')
 
 const logo = computed(() => {
@@ -46,22 +52,20 @@ const logo = computed(() => {
             return img10
     }
 })
-// const material = (name) => {
-//     props.attributes.filter(s => s.name === name).map(o => o.options).join(' ')
-// }
+
 
 </script>
 <template>
     <div class=" container bg-stone-100 my-8 grid grid-cols-12 gap-8 pt-8 pb-16 px-8 ">
         <div class="flex col-start-7 col-span-6 mb-8">
-            <div v-show="fulfillment.length !== 0" class=" w-1/2 flex items-start">
+            <div v-show="fulfillment.length" class=" w-1/2 flex items-start">
                 <img class=" w-8 mr-2" src="@/assets/images/product/wypelnienie.svg" alt="" />
                 <div class="mr-8">
                     <p class=" text-gray-500 uppercase text-xs">Wypełnienie</p>
                     <p>{{ fulfillment }}</p>
                 </div>
             </div>
-            <div class=" flex items-start w-1/2">
+            <div v-show="fabric.length" class=" flex items-start w-1/2">
                 <img class=" w-8 mr-2" src="@/assets/images/product/material.svg" alt="" />
                 <div class="">
                     <p class=" text-gray-500 uppercase text-xs">Tkanina</p>

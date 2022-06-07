@@ -32,7 +32,7 @@ const size = props.attributes.filter(s => s.name === "Rozmiar").map(o => o.optio
                 <div v-show="props.id === showHideAtributesId">
                     <ListWishlist :name="props.name" :slug="props.slug" :image="props.image[0].src" :id="props.id"
                         :price="props.price" />
-                    <div v-if="props.attributes"
+                    <div v-if="props.attributes.length"
                         class=" text-center bg-white p-2 absolute w-11/12 left-[4.5%] bottom-0">
                         <p class="text-xs">Dostępne rozmiary:</p>
                         <ul>

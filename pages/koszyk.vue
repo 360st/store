@@ -6,10 +6,6 @@ const { changeQuantityProductCart, removeFromCart } = useMainStore()
 const { cart, sum } = storeToRefs(useMainStore())
 const newQuantity = ref(null)
 
-
-const getNewQuantity = (value) => {
-    newQuantity.value = value
-}
 const getIndex = (index) => {
     changeQuantityProductCart(index, newQuantity.value)
 }
@@ -58,7 +54,7 @@ const getIndex = (index) => {
                             
                             {{ product.price }} zł
                         </div>
-                        <div class=" col-span-2"><ProductQuantity   @quantity="getNewQuantity" @index="getIndex" :quantity="product.quantity" :index="index"  /></div>
+                        <div class=" col-span-2"><ProductQuantity @quantity="(val) => newQuantity = val"  @index="getIndex" :quantity="product.quantity" :index="index"  /></div>
                         <div class=" col-span-2 font-bold">
                             {{ product.price * product.quantity }} zł
                         </div>

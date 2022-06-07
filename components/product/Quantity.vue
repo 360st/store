@@ -19,3 +19,10 @@ watch(() => inputValue.value, () => {
         min="1" step="1" v-model="inputValue" />
     <button @click="inputValue++" class=" border border-gray-300 w-7 h-14"> + </button>
 </template>
+<style >
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+</style>
