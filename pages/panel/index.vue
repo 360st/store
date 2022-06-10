@@ -1,12 +1,22 @@
 <script setup>
+import { useMainStore } from '@/store/useMainStore';
+import { storeToRefs } from 'pinia';
+
+const { tokenStore } = storeToRefs(useMainStore())
+
+
+definePageMeta({
+    middleware: 'auth'
+})
 
 const { data } = await useFetch('/api/post/getAllCategories')
+const router = useRouter()
 const priceToString = ref('')
 
 const send = ref({
     name: "",
     type: "simple",
-    regular_price:" ",
+    regular_price: " ",
     description: "",
     short_description: "",
     categories: [
@@ -21,42 +31,58 @@ const send = ref({
     ]
 })
 const erroMassage = ref(null)
-const succesMassage = ref(null)
+const successMassage = ref(null)
 
 const add = async () => {
     send.value.regular_price = priceToString.value.toString()
-    succesMassage.value = false
-    const { data: succes, error } = await useFetch(`/api/post/submit`, { method: 'POST', body: send.value})
-    
-    erroMassage.value = error.value
-    succesMassage.value = succes.value
+    successMassage.value = false
 
-    send.value = {
-        name: "",
-        type: "simple",
-        regular_price: "",
-        description: "",
-        short_description: "",
-        categories: [
-            {
-                id: ''
-            }
-        ],
-        images: [
-            {
-                src: 'http://demo.woothemes.com/woocommerce/wp-content/uploads/sites/56/2013/06/T_2_front.jpg'
-            }
-        ]
+    const { data: validate } = await useFetch('https://cotti.pl/wp-json/jwt-auth/v1/token/validate', { method: 'POST', headers: { 'Authorization': 'Bearer ' + tokenStore.value } })
+
+    if (validate.value.success === true) {
+        const { data: success, error } = await useFetch(`/api/post/submit`, { method: 'POST', body: send.value })
+
+        erroMassage.value = error.value
+        successMassage.value = success.value
+
+        send.value = {
+            name: "",
+            type: "simple",
+            regular_price: "",
+            description: "",
+            short_description: "",
+            categories: [
+                {
+                    id: ''
+                }
+            ],
+            images: [
+                {
+                    src: 'http://demo.woothemes.com/woocommerce/wp-content/uploads/sites/56/2013/06/T_2_front.jpg'
+                }
+            ]
+        }
+        priceToString.value = " "
     }
-    priceToString.value = " "
 }
+
+const logOut = () => {
+    localStorage.removeItem('name')
+    tokenStore.value = null
+    router.push('/login?logout=true')
+}
+
 
 </script>
 <template>
     <div class="text-gray-800 text-[.875rem]">
         <NuxtLayout name="navbar" />
         <div class=" container">
-            <h1 class=" font-light text-3xl my-4">Dodaj prosty produkt</h1>
+            <div class=" flex items-center">
+                <h1 class=" font-light text-3xl my-4">Witaj: {{ loggedName }}. Dodaj prosty produkt</h1>
+                <p @click="logOut" class=" ml-auto p-2 bg-green-500 text-white rounded cursor-pointer">Wyloguj</p>
+            </div>
+
             <form id="form1" @submit.prevent="add" class=" my-8">
                 <div class=" flex gap-8 my-8">
                     <input v-model="send.name" type="text" required placeholder="Nazwa produktu"
@@ -80,8 +106,8 @@ const add = async () => {
                 <div class=" flex items-center gap-8">
                     <input class=" border border-amber-500 py-3 px-12 cursor-pointer" type="submit" value="Zapisz" />
                     <p v-show="erroMassage" style="color: red">Coś poszło nie tak!</p>
-                    <p v-show="succesMassage === false" >Dodawanie</p>
-                    <p v-show="succesMassage" style="color: green">Produkt dodano</p>
+                    <p v-show="successMassage === false">Dodawanie</p>
+                    <p v-show="successMassage" style="color: green">Produkt dodano</p>
                 </div>
             </form>
         </div>

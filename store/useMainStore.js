@@ -8,6 +8,8 @@ export const useMainStore = defineStore({
       idPaginationPage: null,
       modalDisplay: false,
       orderby: 'date',
+      loggedName: null,
+      tokenStore: null,
       cart: [],
       wishlist: []
     }

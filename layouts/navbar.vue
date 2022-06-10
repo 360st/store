@@ -2,15 +2,23 @@
 import { useMainStore } from '@/store/useMainStore';
 import { storeToRefs } from 'pinia';
 
-const { cart, wishlist } = storeToRefs(useMainStore())
+const { cart, wishlist, loggedName, tokenStore } = storeToRefs(useMainStore())
 const router = useRouter()
 
-onMounted(() => {
-    if (localStorage.getItem('cart')) {
+
+onMounted(() => {   
+
+    if(document.cookie && !tokenStore.value){
+        tokenStore.value = document.cookie.slice(12)
+    }
+    if (localStorage.getItem('cart') && !cart.value.length) {
         cart.value = JSON.parse(localStorage.getItem('cart'))
     }
-    if (localStorage.getItem('wishlist')) {
+    if (localStorage.getItem('wishlist') && !wishlist.value.length) {
         wishlist.value = JSON.parse(localStorage.getItem('wishlist'))
+    }
+    if(localStorage.getItem('name') && !loggedName.value){
+        loggedName.value = JSON.parse(localStorage.getItem('name'))
     }
 })
 watch(cart, (val) => {

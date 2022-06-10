@@ -1,4 +1,5 @@
 <script setup>
+
 </script>
 <template>
     <div class="text-gray-800 text-[.875rem]">
