@@ -13,8 +13,7 @@ const getIndex = (index) => {
 
 </script>
 <template>
-    <div class="text-gray-800 text-[.875rem]">
-        <NuxtLayout name="navbar" />
+    <NuxtLayout name="custom">
         <div class=" container">
             <div class=" grid grid-cols-12 gap-12 my-8">
                 <div class=" col-span-4 border-b-2 border-green-600">
@@ -46,22 +45,27 @@ const getIndex = (index) => {
                         <div class=" col-span-2 text-stone-500 font-semibold uppercase text-xs">Ilość</div>
                         <div class=" col-span-2 text-stone-500 font-semibold uppercase text-xs">Suma</div>
                     </div>
-                    <div v-for="(product, index) in cart" :key="product.id" class=" grid grid-cols-12 gap-12 border-y py-4 mt-4 mb-2 border-stone-100 items-center">
+                    <div v-for="(product, index) in cart" :key="product.id"
+                        class=" grid grid-cols-12 gap-12 border-y py-4 mt-4 mb-2 border-stone-100 items-center">
                         <div class=" col-span-5 font-bold flex">
-                            <img class=" w-10 mr-2 rounded" :src="product.image" :alt="product.name" />   {{ product.name }} {{ product.size }}
+                            <img class=" w-10 mr-2 rounded" :src="product.image" :alt="product.name" /> {{ product.name
+                            }} {{ product.size }}
                         </div>
                         <div class=" col-span-2">
-                            
+
                             {{ product.price }} zł
                         </div>
-                        <div class=" col-span-2"><ProductQuantity @quantity="(val) => newQuantity = val"  @index="getIndex" :quantity="product.quantity" :index="index"  /></div>
+                        <div class=" col-span-2">
+                            <ProductQuantity @quantity="(val) => newQuantity = val" @index="getIndex"
+                                :quantity="product.quantity" :index="index" />
+                        </div>
                         <div class=" col-span-2 font-bold">
                             {{ product.price * product.quantity }} zł
                         </div>
                         <div class=" col-span-1 cursor-pointer" @click="removeFromCart(index)">
                             X
                         </div>
-                    </div>                    
+                    </div>
                 </div>
                 <div class=" col-span-4 text-black  text-xs">
                     <p class="font-bold uppercase mb-8">Podsumowanie koszyka</p>
@@ -70,6 +74,5 @@ const getIndex = (index) => {
             </div>
 
         </div>
-        <NuxtLayout name="footer" />
-    </div>
+    </NuxtLayout>
 </template>

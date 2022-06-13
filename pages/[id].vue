@@ -1,26 +1,23 @@
 <script setup>
-    const breadcrumbs = ref()
-    const error = ref(null)
+const breadcrumbs = ref()
+const error = ref(null)
 
-    onErrorCaptured(e => {
-        error.value = e
-    })
+onErrorCaptured(e => {
+    error.value = e
+})
 
 </script>
 <template>
-    <div class="text-gray-800 text-[.875rem]">
-        <NuxtLayout name="navbar" />
+    <NuxtLayout name="custom">
         <Breadcrumbs :breadcrumbs="breadcrumbs" />
         <div v-if="error">{{ error }}</div>
         <Suspense v-else>
             <template #default>
-                <ProductSuspense @breadcrumbs=" (val) => breadcrumbs = val"   />
+                <ProductSuspense @breadcrumbs="(val) => breadcrumbs = val" />
             </template>
             <template #fallback>
                 <ProductSkeleton />
             </template>
         </Suspense>
-        
-        <NuxtLayout name="footer" />
-    </div>
+    </NuxtLayout>
 </template>

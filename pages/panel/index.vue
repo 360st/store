@@ -74,8 +74,7 @@ const logOut = () => {
 
 </script>
 <template>
-    <div class="text-gray-800 text-[.875rem]">
-        <NuxtLayout name="navbar" />
+    <NuxtLayout name="custom">
         <div class=" container">
             <div class=" flex items-center">
                 <h1 class=" font-light text-3xl my-4">Witaj: {{ loggedName }}. Dodaj prosty produkt</h1>
@@ -110,6 +109,5 @@ const logOut = () => {
                 </div>
             </form>
         </div>
-        <NuxtLayout name="footer" />
-    </div>
+    </NuxtLayout>
 </template>

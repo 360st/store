@@ -12,8 +12,7 @@ onErrorCaptured(e => {
 
 </script>
 <template>
-    <div class="text-gray-800 text-[.875rem]">
-        <NuxtLayout name="navbar" />
+    <NuxtLayout name="custom">
         <Breadcrumbs :breadcrumbsName="breadcrumbsName" :breadcrumbsParentName="breadcrumbsParentName" />
         <div class=" container">
             <div v-if="error">{{ error }}</div>
@@ -37,7 +36,5 @@ onErrorCaptured(e => {
             </Suspense>
             <ListPagination v-if="totalPagesInCategory" :totalPagesInCategory="totalPagesInCategory" />
         </div>
-        <NuxtLayout name="footer" />
-
-    </div>
+    </NuxtLayout>
 </template>

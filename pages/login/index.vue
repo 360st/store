@@ -41,8 +41,7 @@ definePageMeta({
 })
 </script>
 <template>
-    <div class="text-gray-800 text-[.875rem]">
-        <NuxtLayout name="navbar" />
+    <NuxtLayout name="custom">
         <div class=" container ">
             <h1 class=" font-light text-3xl my-4">Logowanie </h1>
             <form @submit.prevent="add" class=" w-1/3 mt-8 mb-24 flex flex-col bg-stone-100 rounded p-8">
@@ -58,6 +57,5 @@ definePageMeta({
 
             </form>
         </div>
-        <NuxtLayout name="footer" />
-    </div>
+    </NuxtLayout>
 </template>

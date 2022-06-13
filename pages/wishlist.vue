@@ -7,8 +7,7 @@ const { wishlist } = storeToRefs(useMainStore())
 
 </script>
 <template>
-    <div class="text-gray-800 text-[.875rem]">
-        <NuxtLayout name="navbar" />
+    <NuxtLayout name="custom">
         <div class=" container">
             <div v-if="!wishlist.length" class=" text-center my-40 text-2xl">
                 Brak produktów
@@ -31,6 +30,5 @@ const { wishlist } = storeToRefs(useMainStore())
                 </div>
             </div>
         </div>
-        <NuxtLayout name="footer" />
-    </div>
+    </NuxtLayout>
 </template>

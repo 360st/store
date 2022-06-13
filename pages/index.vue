@@ -2,12 +2,10 @@
 
 </script>
 <template>
-    <div class="text-gray-800 text-[.875rem]">
-        <NuxtLayout name="navbar" />
+    <NuxtLayout name="custom">
         <CommonTheHeader />
         <CommonMainTheRandomSectionFirst />
-        <CommonMainTheRandomSectionSecond />        
+        <CommonMainTheRandomSectionSecond />
         <CommonMainTheBaner />
-        <NuxtLayout name="footer" />
-    </div>   
+    </NuxtLayout>
 </template>
