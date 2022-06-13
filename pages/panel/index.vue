@@ -26,7 +26,7 @@ const send = ref({
     ],
     images: [
         {
-            src: 'http://demo.woothemes.com/woocommerce/wp-content/uploads/sites/56/2013/06/T_2_front.jpg'
+            src: 'https://cotti.pl/wp-content/uploads/2021/09/114128_0014.jpg'
         }
     ]
 })
@@ -58,7 +58,7 @@ const add = async () => {
             ],
             images: [
                 {
-                    src: 'http://demo.woothemes.com/woocommerce/wp-content/uploads/sites/56/2013/06/T_2_front.jpg'
+                    src: 'https://cotti.pl/wp-content/uploads/2021/09/114128_0014.jpg'
                 }
             ]
         }
