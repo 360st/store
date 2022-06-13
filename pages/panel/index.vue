@@ -2,7 +2,7 @@
 import { useMainStore } from '@/store/useMainStore';
 import { storeToRefs } from 'pinia';
 
-const { tokenStore } = storeToRefs(useMainStore())
+const { tokenStore, loggedName } = storeToRefs(useMainStore())
 
 
 definePageMeta({
@@ -41,7 +41,6 @@ const add = async () => {
 
     if (validate.value.success === true) {
         const { data: success, error } = await useFetch(`/api/post/submit`, { method: 'POST', body: send.value })
-
         erroMassage.value = error.value
         successMassage.value = success.value
 
