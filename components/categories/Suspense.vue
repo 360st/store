@@ -6,9 +6,10 @@ const parent = ref({ name: undefined, slug: undefined })
 
 const { data } = await useFetch(`/api/categories/${route.params.kategoria}`, { pick: ['name', 'id', 'parent'] })
 if(data.value.parent !== 0){
-    const { data } =  await useFetch(`/api/categories/parent/${data.value.parent}`, { pick: ['name', 'slug'] })
-    parent.value = data.value
+    const { data: datas } =  await useFetch(`/api/categories/parent/${data.value.parent}`, { pick: ['name', 'slug'] })
+    parent.value = datas.value
 }
+
 const { data: subcategories } = await useFetch(`/api/categories/subcategories/${data.value.id}`)
 
 emit('categoryId', data.value.id)
