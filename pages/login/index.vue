@@ -11,7 +11,7 @@ const erroMassage = ref(false)
 const tokenCookie = useCookie('tokenCookie', { maxAge: 24 * 60 * 60 })
 
 const add = async () => {
-    const { data } = await useFetch('https://cotti.pl/wp-json/jwt-auth/v1/token', {
+    const { data } = await useFetch('http://kbspsogfae.cfolks.pl/wp-json/jwt-auth/v1/token', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: {

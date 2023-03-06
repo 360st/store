@@ -26,7 +26,7 @@ const send = ref({
     ],
     images: [
         {
-            src: 'https://cotti.pl/wp-content/uploads/2021/09/114128_0014.jpg'
+            src: 'http://kbspsogfae.cfolks.pl/wp-content/uploads/2021/09/114128_0014.jpg'
         }
     ]
 })
@@ -37,7 +37,7 @@ const add = async () => {
     send.value.regular_price = priceToString.value.toString()
     successMassage.value = false
 
-    const { data: validate } = await useFetch('https://cotti.pl/wp-json/jwt-auth/v1/token/validate', { method: 'POST', headers: { 'Authorization': 'Bearer ' + tokenStore.value } })
+    const { data: validate } = await useFetch('http://kbspsogfae.cfolks.pl/wp-json/jwt-auth/v1/token/validate', { method: 'POST', headers: { 'Authorization': 'Bearer ' + tokenStore.value } })
 
     if (validate.value.success === true) {
         const { data: success, error } = await useFetch(`/api/post/submit`, { method: 'POST', body: send.value })
@@ -57,7 +57,7 @@ const add = async () => {
             ],
             images: [
                 {
-                    src: 'https://cotti.pl/wp-content/uploads/2021/09/114128_0014.jpg'
+                    src: 'http://kbspsogfae.cfolks.pl/wp-content/uploads/2021/09/114128_0014.jpg'
                 }
             ]
         }
